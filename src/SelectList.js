@@ -1,13 +1,21 @@
 import styled from "styled-components"
 import React from "react";
+import questionsObj from "./questionsObj";
 
-const deckOptions = ["React", "HTML/CSS"]
+const deckOptions = ["React", "HTML/CSS", "One Piece"]
 
-export default function SelectList({deck, setDeck}) {
+export default function SelectList({setRemindQuestion, deck, setDeck}) {
     
+    function mudarDeque(e) {
+        const aux = Array(questionsObj[e.target.value].questions.length);
+        aux.fill('notAnswered')
+        setRemindQuestion(aux);
+        setDeck(e.target.value);
+    }
+
     return (
     <>   
-        <SelectionList value={deck} onChange={(e) => setDeck(e.target.value)} data-identifier="deck-selector" name="decks">
+        <SelectionList value={deck} onChange={(e) => mudarDeque(e)} data-identifier="deck-selector" name="decks">
             <option id="placeholder" disabled>Escolha seu deck</option>
             {deckOptions.map((value, index) => <option data-identifier="deck-option" key={index}>{value}</option>)}
         </SelectionList>

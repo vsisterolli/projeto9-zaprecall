@@ -3,13 +3,20 @@ import React from "react";
 
 const imgByStatus = ["assets/wrong.svg", "assets/question-mark.svg", "assets/correct.svg"];
 
-export default function Footer({remindQuestion}) {
+export default function Footer({zapsMeta, remindQuestion}) {
 
-    const [completadas, setCompletadas] = React.useState(0);
-
-    let contador = 0;
-    for(let element of remindQuestion) 
+    let contador = 0, corretas = 0;
+    for(let element of remindQuestion) {
         contador += (element !== "notAnswered" && element !== "beingAnswered" ? 1 : 0)
+        corretas += (element === 2 ? 1 : 0);
+    }
+
+    let statusMeta;
+    if(contador === remindQuestion.length) {
+        if(corretas >= zapsMeta) statusMeta = "Parabéns! Meta de zaps conquistada com sucesso."
+        else statusMeta = "Putz! Ainda não, na próxima vai."
+    }
+    else statusMeta="";
 
     return (
     <CompletedQuestions>
@@ -22,6 +29,7 @@ export default function Footer({remindQuestion}) {
                     return (<img src={imgByStatus[value]}/>);}
             )}
         </div>
+        <h1>{statusMeta}</h1>
     </CompletedQuestions>    )
 }
 
@@ -52,6 +60,7 @@ const CompletedQuestions = styled.footer`
 
     img {
         margin-left: 8px;
+        margin-bottom: 8px;
     }
     
 

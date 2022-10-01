@@ -28,6 +28,15 @@ const AppScreen = styled.section`
         padding: 0;
     }
 
+    h2 { 
+        font-family: 'Righteous';
+        font-size: 24px;
+        line-height: 45px;
+        letter-spacing: -0.012em;
+        color: #FFFFFF;
+        padding: 0;
+    }
+
     .screen0 {
         margin-bottom: 50px;
         margin-top: 80px;

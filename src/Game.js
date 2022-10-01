@@ -5,16 +5,10 @@ import styled from 'styled-components';
 import questionsObj from './questionsObj';
 import React from 'react';
 
-const questions = questionsObj["React"].questions;
-const answers = questionsObj["React"].answers;
+export default function Game({zapsMeta, remindQuestion, setRemindQuestion, deck, screen}) {
 
-const aux = Array(questions.length);
-aux.fill('notAnswered');
-
-
-export default function Game({screen}) {
-
-    const [remindQuestion, setRemindQuestion] = React.useState(aux);
+    const questions = questionsObj[deck].questions;
+    const answers = questionsObj[deck].answers;
 
     return (
         <>
@@ -23,9 +17,9 @@ export default function Game({screen}) {
                 <img alt="logo zapcaller" src="assets/small logo.svg"/>
                 <h1 className="screen1">ZapRecall</h1>
             </header>
-            <QuestionsBox remindQuestion={remindQuestion} setRemindQuestion={setRemindQuestion}/>
+            <QuestionsBox questions={questions} answers={answers} remindQuestion={remindQuestion} setRemindQuestion={setRemindQuestion}/>
             <FakeFooter/>
-            <Footer remindQuestion={remindQuestion}/>
+            <Footer zapsMeta={zapsMeta} remindQuestion={remindQuestion}/>
         </AppScreen>        
         </>
     )

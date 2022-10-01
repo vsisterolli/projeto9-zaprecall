@@ -46,7 +46,7 @@ const CompletedQuestions = styled.footer`
 
     overflow-x: auto;
 
-    position: absolute;
+    position: fixed;
     bottom: 0px;
 
 

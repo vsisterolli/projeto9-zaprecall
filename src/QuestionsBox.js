@@ -14,4 +14,5 @@ export default function QuestionsBox({questions, answers, remindQuestion, setRem
 const QuestBoxs = styled.div`
     max-height: 70%;
     overflow-y: auto;
+    padding-right: 2px;
 `

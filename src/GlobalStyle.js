@@ -50,6 +50,27 @@ const GlobalStyle = createGlobalStyle`
     body {
         background-color: #FB6B6B;
     }
+    /* ===== Scrollbar CSS ===== */
+    /* Firefox */
+    * {
+        scrollbar-width: auto;
+        scrollbar-color: #212121 #6e6e6e;
+    }
+
+    /* Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+        width: 7px;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: #6e6e6e;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color: #212121;
+        border-radius: 10px;
+        border: 5px solid #212121;
+    }
 `;
 
 export default GlobalStyle;
